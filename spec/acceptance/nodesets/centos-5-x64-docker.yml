@@ -1,0 +1,17 @@
+HOSTS:
+  centos-5-x64:
+    roles:
+      - master
+      - agent
+    platform: el-5-x86_64
+    hypervisor: docker
+    image: centos:5
+    docker_preserve_image: true
+    docker_cmd:
+      - '/sbin/init'
+    docker_image_commands:
+      - 'yum install -y tar wget which crontabs git'
+    docker_container_name: 'nfs'
+CONFIG:
+  log_level: debug
+  type: foss

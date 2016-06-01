@@ -1,0 +1,43 @@
+# See README.md for more details.
+class fail2ban (
+  $package_ensure       = 'present',
+  $package_name         = $fail2ban::params::package_name,
+  $manage_repo          = true,
+  $service_name         = $fail2ban::params::service_name,
+  $service_ensure       = 'running',
+  $service_enable       = true,
+  $service_hasstatus    = $fail2ban::params::service_hasstatus,
+  $service_hasrestart   = $fail2ban::params::service_hasrestart,
+  $config_path          = $fail2ban::params::config_path,
+  $jail_config_path     = $fail2ban::params::jail_config_path,
+  $default_ignoreip     = ['127.0.0.1/8'],
+  $default_bantime      = '600',
+  $default_findtime     = '600',
+  $default_maxretry     = '5',
+  $jails                = undef,
+) inherits fail2ban::params {
+
+  validate_bool($manage_repo)
+
+  include fail2ban::install
+  include fail2ban::config
+  include fail2ban::service
+
+  anchor { 'fail2ban::start': }->
+  Class['fail2ban::install']->
+  Class['fail2ban::config']~>
+  Class['fail2ban::service']->
+  anchor { 'fail2ban::end': }
+
+  if $jails {
+    if is_array($jails) {
+      fail2ban::jail { $jails: }
+    } elsif is_hash($jails) {
+      create_resources('fail2ban::jail', $jails)
+    } else {
+      $_type = type3x($jails)
+      fail("Module ${module_name}: jails must be an array or a hash, ${_type} given.")
+    }
+  }
+
+}

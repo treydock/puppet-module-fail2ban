@@ -1,0 +1,10 @@
+fixtures:
+  repositories:
+    stdlib:
+      repo: https://github.com/puppetlabs/puppetlabs-stdlib.git
+    inifile:
+      repo: https://github.com/puppetlabs/puppetlabs-inifile.git
+    epel:
+      repo: https://github.com/stahnma/puppet-module-epel.git
+  symlinks:
+    fail2ban: "#{source_dir}"
