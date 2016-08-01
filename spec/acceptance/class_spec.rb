@@ -11,7 +11,15 @@ describe 'fail2ban class:' do
       apply_manifest(pp, :catch_changes => true)
     end
 
-    describe package('fail2ban') do
+    if fact('osfamily') == 'RedHat'
+      if fact('operatingsystemmajrelease') == '7'
+        package_name = 'fail2ban-server'
+      else
+        package_name = 'fail2ban'
+      end
+    end
+
+    describe package(package_name) do
       it { should be_installed }
     end
 
