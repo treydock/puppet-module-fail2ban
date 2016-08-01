@@ -1,5 +1,16 @@
 # Private class.
 class fail2ban::config {
+  if $caller_module_name != $module_name {
+    fail("Use of private class ${name} by ${caller_module_name}")
+  }
+
+  resources { 'fail2ban_config':
+    purge => true,
+  }
+
+  resources { 'fail2ban_jail_config':
+    purge => true,
+  }
 
   file { '/etc/fail2ban/fail2ban.local':
     ensure => 'file',

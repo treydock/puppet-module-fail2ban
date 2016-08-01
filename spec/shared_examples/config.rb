@@ -1,5 +1,13 @@
 shared_context "fail2ban::config" do |facts|
   it do
+    is_expected.to contain_resources('fail2ban_config').with_purge('true')
+  end
+
+  it do
+    is_expected.to contain_resources('fail2ban_jail_config').with_purge('true')
+  end
+
+  it do
     is_expected.to contain_file('/etc/fail2ban/fail2ban.local').with({
       :ensure  => 'file',
       :path    => '/etc/fail2ban/fail2ban.local',
