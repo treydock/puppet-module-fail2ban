@@ -14,6 +14,7 @@ class fail2ban (
   $default_bantime      = '600',
   $default_findtime     = '600',
   $default_maxretry     = '5',
+  $logtarget            = $fail2ban::params::logtarget,
   $jails                = undef,
 ) inherits fail2ban::params {
 

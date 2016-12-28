@@ -28,6 +28,7 @@ class fail2ban::config {
     mode   => '0644',
   }
 
+  fail2ban_config { 'Definition/logtarget': value => $fail2ban::logtarget }
   fail2ban_jail_config { 'DEFAULT/ignoreip': value => join($fail2ban::default_ignoreip, ' ') }
   fail2ban_jail_config { 'DEFAULT/bantime': value => $fail2ban::default_bantime }
   fail2ban_jail_config { 'DEFAULT/findtime': value => $fail2ban::default_findtime }

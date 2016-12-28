@@ -8,6 +8,7 @@ class fail2ban::params {
       $service_hasrestart = true
       $config_path        = '/etc/fail2ban/fail2ban.local'
       $jail_config_path   = '/etc/fail2ban/jail.local'
+      $logtarget          = '/var/log/fail2ban.log'
       if versioncmp($::operatingsystemrelease, '7.0') >= 0 {
         $package_name       = 'fail2ban-server'
       } else {
