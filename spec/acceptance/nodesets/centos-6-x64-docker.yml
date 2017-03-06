@@ -11,7 +11,7 @@ HOSTS:
       - '/sbin/init'
     docker_image_commands:
       - 'yum install -y tar wget cronie git'
-    docker_container_name: 'nfs'
+    docker_container_name: 'fail2ban-el6'
 CONFIG:
   log_level: debug
   type: foss
