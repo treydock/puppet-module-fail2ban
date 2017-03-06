@@ -16,7 +16,7 @@ class fail2ban::install {
   }
 
   package { 'fail2ban':
-    ensure  => $fail2ban::package_ensure,
+    ensure  => $fail2ban::_package_ensure,
     name    => $fail2ban::package_name,
     require => $_require,
   }
