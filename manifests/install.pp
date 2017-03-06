@@ -4,7 +4,7 @@ class fail2ban::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  if $fail2ban::manage_repo {
+  if $fail2ban::manage_repo and $fail2ban::ensure == 'present' {
     if $::osfamily == 'RedHat' {
       include ::epel
       $_require = Class['epel']
