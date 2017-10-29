@@ -3,7 +3,7 @@ class fail2ban (
   $ensure               = 'present',
   $package_ensure       = 'present',
   $package_name         = $fail2ban::params::package_name,
-  $manage_repo          = true,
+  Boolean $manage_repo  = true,
   $service_name         = $fail2ban::params::service_name,
   $service_ensure       = 'running',
   $service_enable       = true,
@@ -18,8 +18,6 @@ class fail2ban (
   $logtarget            = $fail2ban::params::logtarget,
   $jails                = undef,
 ) inherits fail2ban::params {
-
-  validate_bool($manage_repo)
 
   case $ensure {
     'present': {
