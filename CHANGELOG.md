@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.1](https://github.com/treydock/puppet-module-fail2ban/tree/1.0.1) (2017-10-30)
+[Full Changelog](https://github.com/treydock/puppet-module-fail2ban/compare/1.0.0...1.0.1)
+
+**Fixed bugs:**
+
+- Fix default\_ignore to also allow host names [\#2](https://github.com/treydock/puppet-module-fail2ban/pull/2) ([treydock](https://github.com/treydock))
+
 ## [1.0.0](https://github.com/treydock/puppet-module-fail2ban/tree/1.0.0) (2017-10-30)
 [Full Changelog](https://github.com/treydock/puppet-module-fail2ban/compare/0.0.1...1.0.0)
 
