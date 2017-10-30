@@ -32,4 +32,9 @@ shared_context "fail2ban::config" do |facts|
   it { is_expected.to contain_fail2ban_jail_config('DEFAULT/bantime').with_value('600') }
   it { is_expected.to contain_fail2ban_jail_config('DEFAULT/findtime').with_value('600') }
   it { is_expected.to contain_fail2ban_jail_config('DEFAULT/maxretry').with_value('5') }
+
+  context 'with mutiple values for default_ignoreip' do
+    let(:params) {{ :default_ignoreip => ['127.0.0.1/8', 'foo.example.com'] }}
+    it { is_expected.to contain_fail2ban_jail_config('DEFAULT/ignoreip').with_value('127.0.0.1/8 foo.example.com') }
+  end
 end

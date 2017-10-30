@@ -31,18 +31,6 @@ describe 'fail2ban' do
       include_context 'fail2ban::config', facts
       include_context 'fail2ban::service', facts
 
-      # Test validate_bool parameters
-      [
-
-      ].each do |param|
-        context "with #{param} => 'foo'" do
-          let(:params) {{ param.to_sym => 'foo' }}
-          it 'should raise an error' do
-            expect { is_expected.to compile }.to raise_error(/is not a boolean/)
-          end
-        end
-      end
-
     end # end context
   end # end on_supported_os loop
 end # end describe

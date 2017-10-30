@@ -11,8 +11,7 @@ class fail2ban (
   Boolean $service_hasrestart             = $fail2ban::params::service_hasrestart,
   Stdlib::Absolutepath $config_path       = $fail2ban::params::config_path,
   Stdlib::Absolutepath $jail_config_path  = $fail2ban::params::jail_config_path,
-  Array[Stdlib::Compat::Ip_address]
-    $default_ignoreip                     = ['127.0.0.1/8'],
+  Array[String] $default_ignoreip         = ['127.0.0.1/8'],
   Integer $default_bantime                = 600,
   Integer $default_findtime               = 600,
   Integer $default_maxretry               = 5,
