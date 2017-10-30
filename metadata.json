@@ -1,6 +1,6 @@
 {
   "name": "treydock-fail2ban",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "treydock",
   "summary": "fail2ban Puppet module",
   "license": "Apache-2.0",
