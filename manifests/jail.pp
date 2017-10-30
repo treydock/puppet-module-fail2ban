@@ -1,20 +1,13 @@
 #
 define fail2ban::jail (
-  $ensure = 'present',
+  Enum['present', 'absent'] $ensure = 'present',
 ) {
 
   include fail2ban
 
-  case $ensure {
-    'present': {
-      $_enabled = true
-    }
-    'absent': {
-      $_enabled = false
-    }
-    default: {
-      fail("Defined type fail2ban::jail: ensure only supports 'present' or 'absent', ${ensure} given.")
-    }
+  $_enabled = $ensure ? {
+    'present' => true,
+    'absent'  => false,
   }
 
   fail2ban_jail_config { "${name}/enabled": value => $_enabled }
