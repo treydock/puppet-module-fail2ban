@@ -115,7 +115,7 @@ Global maxretry value. Default is `5`
 
 ##### logtarget
 
-Location of logtarget. Default is OS dependent.
+Location of logtarget. Accepts `SYSLOG`, `STDOUT`, `STDERR` or a file path.  Default is `/var/log/fail2ban.log`.
 
 ##### jails
 
