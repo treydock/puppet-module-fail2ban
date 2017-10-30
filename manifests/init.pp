@@ -32,6 +32,7 @@ class fail2ban (
       $_config_ensure  = 'absent'
       $_service_enable = false
     }
+    default: {}
   }
 
   include fail2ban::install
@@ -39,17 +40,17 @@ class fail2ban (
   include fail2ban::service
 
   if $ensure == 'present' {
-    anchor { 'fail2ban::start': }->
-    Class['fail2ban::install']->
-    Class['fail2ban::config']~>
-    Class['fail2ban::service']->
-    anchor { 'fail2ban::end': }
+    anchor { 'fail2ban::start': }
+    -> Class['fail2ban::install']
+    -> Class['fail2ban::config']
+    ~> Class['fail2ban::service']
+    -> anchor { 'fail2ban::end': }
   } else {
-    anchor { 'fail2ban::start': }->
-    Class['fail2ban::service']->
-    Class['fail2ban::config']->
-    Class['fail2ban::install']->
-    anchor { 'fail2ban::end': }
+    anchor { 'fail2ban::start': }
+    -> Class['fail2ban::service']
+    -> Class['fail2ban::config']
+    -> Class['fail2ban::install']
+    -> anchor { 'fail2ban::end': }
   }
 
 
