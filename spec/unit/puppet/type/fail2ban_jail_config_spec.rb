@@ -36,19 +36,19 @@ describe 'Puppet::Type.type(:fail2ban_jail_config)' do
 
   it 'should accept a valid value' do
     @fail2ban_jail_config[:value] = 'bar'
-    @fail2ban_jail_config[:value].should == 'bar'
+    expect(@fail2ban_jail_config[:value]).to eq('bar')
   end
 
   it 'should not accept a value with whitespace' do
     @fail2ban_jail_config[:value] = 'b ar'
-    @fail2ban_jail_config[:value].should == 'b ar'
+    expect(@fail2ban_jail_config[:value]).to eq('b ar')
   end
 
   it 'should accept valid ensure values' do
     @fail2ban_jail_config[:ensure] = :present
-    @fail2ban_jail_config[:ensure].should == :present
+    expect(@fail2ban_jail_config[:ensure]).to eq(:present)
     @fail2ban_jail_config[:ensure] = :absent
-    @fail2ban_jail_config[:ensure].should == :absent
+    expect(@fail2ban_jail_config[:ensure]).to eq(:absent)
   end
 
   it 'should not accept invalid ensure values' do
@@ -64,8 +64,8 @@ describe 'Puppet::Type.type(:fail2ban_jail_config)' do
       catalog.add_resource @fail2ban_jail_config
       catalog.add_resource conf
       rel = @fail2ban_jail_config.autorequire[0]
-      rel.source.ref.should == conf.ref
-      rel.target.ref.should == @fail2ban_jail_config.ref
+      expect(rel.source.ref).to eq(conf.ref)
+      expect(rel.target.ref).to eq(@fail2ban_jail_config.ref)
     end
   end
 
