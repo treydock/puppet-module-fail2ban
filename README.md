@@ -1,5 +1,6 @@
 # puppet-module-fail2ban
 
+[![Puppet Forge](http://img.shields.io/puppetforge/v/treydock/fail2ban.svg)](https://forge.puppetlabs.com/treydock/fail2ban)
 [![Build Status](https://travis-ci.org/treydock/puppet-module-fail2ban.png)](https://travis-ci.org/treydock/puppet-module-fail2ban)
 
 ####Table of Contents
@@ -14,13 +15,24 @@
 
 ## Overview
 
-
+This module manages Fail2ban.
 
 ## Usage
 
 ### fail2ban
 
-    class { 'fail2ban': }
+Install and configure fail2ban with SSH jail.
+
+    class { 'fail2ban':
+      jails => ['sshd'],
+    }
+
+Configure fail2ban to not ban a local subnet
+
+    class { 'fail2ban':
+      jails            => ['sshd'],
+      default_ignoreip => ['10.0.0.0/8'],
+    }
 
 ## Reference
 
@@ -41,13 +53,80 @@
 
 #### fail2ban
 
-#####`foo`
+##### ensure
+
+Determines presence of fail2ban. Valid values are `present` and `absent`, default is `present`.
+
+##### package_ensure
+
+The ensure property of fail2ban package. Default is `present`.
+
+##### package_name
+
+The fail2ban package name. Default is OS dependent.
+
+##### manage_repo
+
+Boolean that sets if fail2ban repo is managed. For EL systems this enables management of EPEL repo.  Default is `true`
+
+##### service_name
+
+fail2ban service name. Default is OS dependent.
+
+##### service_ensure
+
+fail2ban service ensure property. Default is `running`.
+
+##### service_enable
+
+fail2ban service enable property. Default is `true`.
+
+##### service_hasstatus
+
+fail2ban service hasstatus property. Default is OS dependent.
+
+##### service_hasrestart
+
+fail2ban service hasrestart property. Default is OS dependent.
+
+##### config_path
+
+Path to fail2ban.local. Default is OS dependent.
+
+##### jail\_config_path
+
+Path to jail.local. Default is OS dependent.
+
+##### default_ignoreip
+
+Global ignoreip value. Default is `['127.0.0.1/8']`
+
+##### default_bantime
+
+Global bantime value. Default is `600`.
+
+##### default_findtime
+
+Global findtime value. Default is `600`.
+
+##### default_maxretry
+
+Global maxretry value. Default is `5`
+
+##### logtarget
+
+Location of logtarget. Default is OS dependent.
+
+##### jails
+
+Array or Hash of jails. Value is passed to `fail2ban::jail` defined type. Default is `undef`.
 
 ## Limitations
 
 This module has been tested on:
 
-* CentOS 6 x86_64
+* CentOS/RedHat 6 x86_64
+* CentOS/RedHat 7 x86_64
 
 ## Development
 
