@@ -1,3 +1,10 @@
+# @summary Manage jail configs
+#
+# @example
+#   fail2ban::jail { 'sshd': ensure => 'present' }
+#
+# @param ensure
+#   Sets if jail should be enabled or disabled
 #
 define fail2ban::jail (
   Enum['present', 'absent'] $ensure = 'present',
