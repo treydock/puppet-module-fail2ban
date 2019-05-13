@@ -1,13 +1,12 @@
 Puppet::Type.newtype(:fail2ban_config) do
-
   ensurable
 
-  newparam(:name, :namevar => true) do
+  newparam(:name, namevar: true) do
     desc 'Section/setting name to manage from fail2ban.local'
     # namevar should be of the form section/setting
     validate do |value|
-      unless value =~ /\S+\/\S+/
-        fail("Invalid fail2ban_config #{value}, entries should be in the form of section/setting.")
+      unless value =~ %r{\S+/\S+}
+        raise("Invalid fail2ban_config #{value}, entries should be in the form of section/setting.")
       end
     end
   end
