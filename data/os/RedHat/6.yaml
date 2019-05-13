@@ -1,0 +1,2 @@
+---
+fail2ban::package_name: fail2ban

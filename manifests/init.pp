@@ -18,7 +18,11 @@ class fail2ban (
   Variant[Enum['SYSLOG','STDOUT','STDERR'],Stdlib::Absolutepath]
     $logtarget                            = $fail2ban::params::logtarget,
   Optional[Variant[Array, Hash]] $jails   = undef,
-) inherits fail2ban::params {
+) {
+
+  if ! $facts['os']['family'] in ['RedHat'] {
+    fail("Unsupported osfamily: ${::osfamily}, module ${module_name} only support osfamily RedHat")
+  }
 
   case $ensure {
     'present': {

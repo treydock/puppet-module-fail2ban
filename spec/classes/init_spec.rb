@@ -19,7 +19,6 @@ describe 'fail2ban' do
       it { is_expected.to compile.with_all_deps }
 
       it { is_expected.to create_class('fail2ban') }
-      it { is_expected.to contain_class('fail2ban::params') }
 
       it { is_expected.to contain_anchor('fail2ban::start').that_comes_before('Class[fail2ban::install]') }
       it { is_expected.to contain_class('fail2ban::install').that_comes_before('Class[fail2ban::config]') }

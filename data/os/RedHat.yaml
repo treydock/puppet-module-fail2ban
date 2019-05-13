@@ -1,0 +1,7 @@
+fail2ban::service_name: fail2ban
+fail2ban::service_hasstatus: true
+fail2ban::service_hasrestart: true
+fail2ban::config_path: /etc/fail2ban/fail2ban.local
+fail2ban::jail_config_path: /etc/fail2ban/jail.local
+fail2ban::logtarget: /var/log/fail2ban.log
+fail2ban::package_name: fail2ban-server
