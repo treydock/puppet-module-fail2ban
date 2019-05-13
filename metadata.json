@@ -1,10 +1,10 @@
 {
   "name": "treydock-fail2ban",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "treydock",
   "summary": "fail2ban Puppet module",
   "license": "Apache-2.0",
-  "source": "git://github.com/treydock/puppet-fail2ban.git",
+  "source": "https://github.com/treydock/puppet-module-fail2ban",
   "project_page": "https://github.com/treydock/puppet-module-fail2ban",
   "issues_url": "https://github.com/treydock/puppet-module-fail2ban/issues",
   "dependencies": [
