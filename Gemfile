@@ -39,7 +39,7 @@ group :system_tests do
   gem "beaker-hostgenerator"
   gem "beaker-rspec"
   gem "beaker-docker"
-  gem "beaker-puppet"
+  gem "beaker-puppet",                                                           require: false, git: 'https://github.com/treydock/beaker-puppet.git', branch: 'BKR-1590'
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
