@@ -1,6 +1,6 @@
 {
   "name": "treydock-fail2ban",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "treydock",
   "summary": "fail2ban Puppet module",
   "license": "Apache-2.0",
@@ -52,5 +52,5 @@
   ],
   "pdk-version": "1.10.0",
   "template-url": "https://github.com/treydock/pdk-templates.git#master",
-  "template-ref": "heads/master-0-ge38f720"
+  "template-ref": "heads/master-0-gb1928e8"
 }
