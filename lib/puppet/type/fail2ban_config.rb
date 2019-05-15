@@ -6,7 +6,7 @@ Puppet::Type.newtype(:fail2ban_config) do
     # namevar should be of the form section/setting
     validate do |value|
       unless value =~ %r{\S+/\S+}
-        raise("Invalid fail2ban_config #{value}, entries should be in the form of section/setting.")
+        raise(Puppet::Error, "Invalid fail2ban_config #{value}, entries should be in the form of section/setting.")
       end
     end
   end
