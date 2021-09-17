@@ -3,12 +3,10 @@
   acceptance_matrix:
     set:
       - centos-7
-      - ---centos-8
+      - centos-8
 .gitlab-ci.yml:
   delete: true
 appveyor.yml:
-  delete: true
-spec/acceptance/nodesets/centos-8.yml:
   delete: true
 spec/acceptance/nodesets/debian-9.yml:
   delete: true
