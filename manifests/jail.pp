@@ -17,6 +17,6 @@ define fail2ban::jail (
     'absent'  => false,
   }
 
-  fail2ban_jail_config { "${name}/enabled": value => $_enabled }
+  fail2ban_jail_config { "${name}/enabled": value => $_enabled, notify => Class['fail2ban::service'] }
 
 }
