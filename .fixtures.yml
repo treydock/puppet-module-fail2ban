@@ -5,9 +5,8 @@ fixtures:
     inifile:
       repo: https://github.com/puppetlabs/puppetlabs-inifile.git
     epel:
-      repo: https://github.com/stahnma/puppet-module-epel.git
+      repo: https://github.com/voxpupuli/puppet-epel.git
     yumrepo_core:
       repo: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git
-      puppet_version: ">= 6.0.0"
   symlinks:
     fail2ban: "#{source_dir}"
