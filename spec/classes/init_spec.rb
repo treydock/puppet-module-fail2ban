@@ -25,13 +25,10 @@ describe 'fail2ban' do
       context 'fail2ban::install' do
         if facts[:operatingsystem] == 'RedHat'
           package_require = 'Class[Epel]'
-          name = if facts[:operatingsystemmajrelease] == '7'
-                   'fail2ban-server'
-                 else
-                   'fail2ban'
-                 end
+          name = 'fail2ban-server'
         else
           package_require = nil
+          name = 'fail2ban'
         end
 
         it do
