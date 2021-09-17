@@ -6,15 +6,15 @@
 <title>
   Puppet Class: fail2ban
   
-    &mdash; Documentation by YARD 0.9.19
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::fail2ban";
   relpath = '../';
 </script>
@@ -411,6 +411,7 @@ defined type.</p>
 </ul>
 
 
+
 </div><div class="method_details_list">
   <table class="source_code">
     <tr>
@@ -478,15 +479,7 @@ defined type.</p>
 101
 102
 103
-104
-105
-106
-107
-108
-109
-110
-111
-112</pre>
+104</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/init.pp', line 44</span>
@@ -512,10 +505,6 @@ class fail2ban (
   Optional[Variant[Array, Hash]] $jails   = undef,
 ) {
 
-  if ! $facts[&#39;os&#39;][&#39;family&#39;] in [&#39;RedHat&#39;] {
-    fail(&quot;Unsupported osfamily: ${::osfamily}, module ${module_name} only support osfamily RedHat&quot;)
-  }
-
   case $ensure {
     &#39;present&#39;: {
       $_package_ensure = $package_ensure
@@ -532,22 +521,18 @@ class fail2ban (
     default: {}
   }
 
-  include fail2ban::install
-  include fail2ban::config
-  include fail2ban::service
+  contain fail2ban::install
+  contain fail2ban::config
+  contain fail2ban::service
 
   if $ensure == &#39;present&#39; {
-    anchor { &#39;fail2ban::start&#39;: }
-    -&gt; Class[&#39;fail2ban::install&#39;]
+    Class[&#39;fail2ban::install&#39;]
     -&gt; Class[&#39;fail2ban::config&#39;]
     ~&gt; Class[&#39;fail2ban::service&#39;]
-    -&gt; anchor { &#39;fail2ban::end&#39;: }
   } else {
-    anchor { &#39;fail2ban::start&#39;: }
-    -&gt; Class[&#39;fail2ban::service&#39;]
+    Class[&#39;fail2ban::service&#39;]
     -&gt; Class[&#39;fail2ban::config&#39;]
     -&gt; Class[&#39;fail2ban::install&#39;]
-    -&gt; anchor { &#39;fail2ban::end&#39;: }
   }
 
 

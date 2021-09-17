@@ -6,15 +6,15 @@
 <title>
   Defined Type: fail2ban::jail
   
-    &mdash; Documentation by YARD 0.9.19
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_defined_types::fail2ban::jail";
   relpath = '../';
 </script>
@@ -113,6 +113,7 @@
 </ul>
 
 
+
 </div><div class="method_details_list">
   <table class="source_code">
     <tr>
@@ -149,7 +150,7 @@ define fail2ban::jail (
     &#39;absent&#39;  =&gt; false,
   }
 
-  fail2ban_jail_config { &quot;${name}/enabled&quot;: value =&gt; $_enabled }
+  fail2ban_jail_config { &quot;${name}/enabled&quot;: value =&gt; $_enabled, notify =&gt; Class[&#39;fail2ban::service&#39;] }
 
 }</pre>
       </td>

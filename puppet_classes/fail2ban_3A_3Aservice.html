@@ -6,15 +6,15 @@
 <title>
   Puppet Class: fail2ban::service
   
-    &mdash; Documentation by YARD 0.9.19
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::fail2ban::service";
   relpath = '../';
 </script>
@@ -84,6 +84,7 @@
 <div class="tags">
   
 
+
 </div><div class="method_details_list">
   <table class="source_code">
     <tr>
@@ -102,17 +103,13 @@
 10
 11
 12
-13
-14
-15</pre>
+13</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/service.pp', line 2</span>
 
 class fail2ban::service {
-  if $caller_module_name != $module_name {
-    fail(&quot;Use of private class ${name} by ${caller_module_name}&quot;)
-  }
+  assert_private()
 
   service { &#39;fail2ban&#39;:
     ensure     =&gt; $fail2ban::_service_ensure,
