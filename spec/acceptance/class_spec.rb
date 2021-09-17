@@ -1,6 +1,12 @@
 require 'spec_helper_acceptance'
 
 describe 'fail2ban class:' do
+  package_name = if fact('osfamily') == 'RedHat'
+                   'fail2ban-server'
+                 else
+                   'fail2ban'
+                 end
+
   context 'default parameters' do
     it 'runs successfully' do
       pp = <<-EOS
@@ -9,14 +15,6 @@ describe 'fail2ban class:' do
 
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
-    end
-
-    if fact('osfamily') == 'RedHat'
-      package_name = if fact('operatingsystemmajrelease') == '7'
-                       'fail2ban-server'
-                     else
-                       'fail2ban'
-                     end
     end
 
     describe package(package_name) do
@@ -51,14 +49,6 @@ describe 'fail2ban class:' do
 
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
-    end
-
-    if fact('osfamily') == 'RedHat'
-      package_name = if fact('operatingsystemmajrelease') == '7'
-                       'fail2ban-server'
-                     else
-                       'fail2ban'
-                     end
     end
 
     describe package(package_name) do

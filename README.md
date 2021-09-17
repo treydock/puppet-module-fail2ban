@@ -42,32 +42,6 @@ Configure fail2ban to not ban a local subnet
 
 This module has been tested on:
 
-* CentOS/RedHat 6 x86_64
 * CentOS/RedHat 7 x86_64
+* CentOS/RedHat 8 x86_64
 
-## Development
-
-### Testing
-
-Testing requires the following dependencies:
-
-* rake
-* bundler
-
-Install gem dependencies
-
-    bundle install
-
-Run unit tests
-
-    bundle exec rake test
-
-If you have Vagrant >= 1.2.0 installed you can run system tests
-
-    bundle exec rake beaker
-
-## TODO
-
-## Further Information
-
-*
