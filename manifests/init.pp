@@ -62,10 +62,6 @@ class fail2ban (
   Optional[Variant[Array, Hash]] $jails   = undef,
 ) {
 
-  if ! $facts['os']['family'] in ['RedHat'] {
-    fail("Unsupported osfamily: ${::osfamily}, module ${module_name} only support osfamily RedHat")
-  }
-
   case $ensure {
     'present': {
       $_package_ensure = $package_ensure
@@ -82,22 +78,18 @@ class fail2ban (
     default: {}
   }
 
-  include fail2ban::install
-  include fail2ban::config
-  include fail2ban::service
+  contain fail2ban::install
+  contain fail2ban::config
+  contain fail2ban::service
 
   if $ensure == 'present' {
-    anchor { 'fail2ban::start': }
-    -> Class['fail2ban::install']
+    Class['fail2ban::install']
     -> Class['fail2ban::config']
     ~> Class['fail2ban::service']
-    -> anchor { 'fail2ban::end': }
   } else {
-    anchor { 'fail2ban::start': }
-    -> Class['fail2ban::service']
+    Class['fail2ban::service']
     -> Class['fail2ban::config']
     -> Class['fail2ban::install']
-    -> anchor { 'fail2ban::end': }
   }
 
 

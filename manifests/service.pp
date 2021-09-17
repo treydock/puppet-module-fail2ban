@@ -1,8 +1,6 @@
 # Private class.
 class fail2ban::service {
-  if $caller_module_name != $module_name {
-    fail("Use of private class ${name} by ${caller_module_name}")
-  }
+  assert_private()
 
   service { 'fail2ban':
     ensure     => $fail2ban::_service_ensure,

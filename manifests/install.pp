@@ -1,8 +1,6 @@
 # Private class.
 class fail2ban::install {
-  if $caller_module_name != $module_name {
-    fail("Use of private class ${name} by ${caller_module_name}")
-  }
+  assert_private()
 
   if $fail2ban::manage_repo and $fail2ban::ensure == 'present' {
     if $::osfamily == 'RedHat' {

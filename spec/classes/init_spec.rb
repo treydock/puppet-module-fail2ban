@@ -16,11 +16,9 @@ describe 'fail2ban' do
 
       it { is_expected.to create_class('fail2ban') }
 
-      it { is_expected.to contain_anchor('fail2ban::start').that_comes_before('Class[fail2ban::install]') }
       it { is_expected.to contain_class('fail2ban::install').that_comes_before('Class[fail2ban::config]') }
       it { is_expected.to contain_class('fail2ban::config').that_notifies('Class[fail2ban::service]') }
-      it { is_expected.to contain_class('fail2ban::service').that_comes_before('Anchor[fail2ban::end]') }
-      it { is_expected.to contain_anchor('fail2ban::end') }
+      it { is_expected.to contain_class('fail2ban::service') }
 
       context 'fail2ban::install' do
         if facts[:operatingsystem] == 'RedHat'
