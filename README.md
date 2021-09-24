@@ -1,7 +1,7 @@
 # puppet-module-fail2ban
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/treydock/fail2ban.svg)](https://forge.puppetlabs.com/treydock/fail2ban)
-[![Build Status](https://travis-ci.org/treydock/puppet-module-fail2ban.png)](https://travis-ci.org/treydock/puppet-module-fail2ban)
+[![CI Status](https://github.com/treydock/puppet-module-fail2ban/workflows/CI/badge.svg?branch=master)](https://github.com/treydock/puppet-module-fail2ban/actions?query=workflow%3ACI)
 
 #### Table of Contents
 
