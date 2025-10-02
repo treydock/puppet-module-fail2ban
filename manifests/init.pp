@@ -20,10 +20,6 @@
 #   fail2ban service ensure property.
 # @param service_enable
 #   fail2ban service enable property.
-# @param service_hasstatus
-#   fail2ban service hasstatus property.
-# @param service_hasrestart
-#   fail2ban service hasrestart property.
 # @param config_path
 #   Path to fail2ban.local.
 # @param jail_config_path
@@ -49,19 +45,15 @@ class fail2ban (
   String $service_name                    = 'fail2ban',
   String $service_ensure                  = 'running',
   Boolean $service_enable                 = true,
-  Boolean $service_hasstatus              = true,
-  Boolean $service_hasrestart             = true,
   Stdlib::Absolutepath $config_path       = '/etc/fail2ban/fail2ban.local',
   Stdlib::Absolutepath $jail_config_path  = '/etc/fail2ban/jail.local',
   Array[String] $default_ignoreip         = ['127.0.0.1/8'],
   Integer $default_bantime                = 600,
   Integer $default_findtime               = 600,
   Integer $default_maxretry               = 5,
-  Variant[Enum['SYSLOG','STDOUT','STDERR'],Stdlib::Absolutepath]
-    $logtarget                            = '/var/log/fail2ban.log',
+  Variant[Enum['SYSLOG','STDOUT','STDERR'],Stdlib::Absolutepath] $logtarget = '/var/log/fail2ban.log',
   Optional[Variant[Array, Hash]] $jails   = undef,
 ) {
-
   case $ensure {
     'present': {
       $_package_ensure = $package_ensure
@@ -92,7 +84,6 @@ class fail2ban (
     -> Class['fail2ban::install']
   }
 
-
   if $jails and $ensure == 'present' {
     if $jails =~ Array {
       fail2ban::jail { $jails: }
@@ -100,5 +91,4 @@ class fail2ban (
       create_resources('fail2ban::jail', $jails)
     }
   }
-
 }

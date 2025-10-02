@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # these tests are a little concerning b/c they are hacking around the
 # modulepath, so these tests will not catch issues that may eventually arise
@@ -16,6 +18,7 @@ $LOAD_PATH.push(
     'lib',
   ),
 )
+
 require 'spec_helper'
 provider_class = Puppet::Type.type(:fail2ban_config).provider(:ini_setting)
 describe provider_class do

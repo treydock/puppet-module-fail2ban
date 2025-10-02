@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'fail2ban class:' do
-  package_name = if fact('osfamily') == 'RedHat'
+  package_name = if fact('os.family') == 'RedHat'
                    'fail2ban-server'
                  else
                    'fail2ban'
                  end
 
-  context 'default parameters' do
+  context 'with default parameters' do
     it 'runs successfully' do
-      pp = <<-EOS
+      pp = <<-PP
       class { 'fail2ban': }
-      EOS
+      PP
 
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
@@ -41,11 +43,11 @@ describe 'fail2ban class:' do
     end
   end
 
-  context 'ensure => absent' do
+  context 'when ensure => absent' do
     it 'runs successfully' do
-      pp = <<-EOS
+      pp = <<-PP
       class { 'fail2ban': ensure => 'absent' }
-      EOS
+      PP
 
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
