@@ -1,12 +1,12 @@
 fixtures:
-  repositories:
+  forge_modules:
     stdlib:
-      repo: https://github.com/puppetlabs/puppetlabs-stdlib.git
+      repo: puppetlabs/stdlib
     inifile:
-      repo: https://github.com/puppetlabs/puppetlabs-inifile.git
+      repo: puppetlabs/inifile
     epel:
-      repo: https://github.com/voxpupuli/puppet-epel.git
+      repo: puppet/epel
     yumrepo_core:
-      repo: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git
+      repo: puppetlabs/yumrepo_core
   symlinks:
     fail2ban: "#{source_dir}"

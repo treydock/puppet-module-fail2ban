@@ -1,13 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'fail2ban' do
-  on_supported_os(supported_os: [
-                    {
-                      'operatingsystem' => 'RedHat',
-                      'operatingsystemrelease' => ['6', '7'],
-                    },
-                  ]).each do |os, facts|
-    context "on #{os}" do
+  on_supported_os.each do |os, facts|
+    context "when #{os}" do
       let(:facts) do
         facts.merge(concat_basedir: '/dne')
       end
@@ -20,8 +17,8 @@ describe 'fail2ban' do
       it { is_expected.to contain_class('fail2ban::config').that_notifies('Class[fail2ban::service]') }
       it { is_expected.to contain_class('fail2ban::service') }
 
-      context 'fail2ban::install' do
-        if facts[:operatingsystem] == 'RedHat'
+      describe 'fail2ban::install' do
+        if facts[:os]['family'] == 'RedHat'
           package_require = 'Class[Epel]'
           name = 'fail2ban-server'
         else
@@ -32,11 +29,11 @@ describe 'fail2ban' do
         it do
           is_expected.to contain_package('fail2ban').only_with(ensure: 'present',
                                                                name: name,
-                                                               require: package_require)
+                                                               require: package_require,)
         end
       end
 
-      context 'fail2ban::config' do
+      describe 'fail2ban::config' do
         it do
           is_expected.to contain_resources('fail2ban_config').with_purge('true')
         end
@@ -50,7 +47,7 @@ describe 'fail2ban' do
                                                                            path: '/etc/fail2ban/fail2ban.local',
                                                                            owner: 'root',
                                                                            group: 'root',
-                                                                           mode: '0644')
+                                                                           mode: '0644',)
         end
 
         it do
@@ -58,7 +55,7 @@ describe 'fail2ban' do
                                                                        path: '/etc/fail2ban/jail.local',
                                                                        owner: 'root',
                                                                        group: 'root',
-                                                                       mode: '0644')
+                                                                       mode: '0644',)
         end
 
         it { is_expected.to contain_fail2ban_config('Definition/logtarget').with_value('/var/log/fail2ban.log') }
@@ -74,15 +71,13 @@ describe 'fail2ban' do
         end
       end
 
-      context 'fail2ban::service' do
+      describe 'fail2ban::service' do
         it do
           is_expected.to contain_service('fail2ban').only_with(ensure: 'running',
                                                                enable: 'true',
-                                                               name: 'fail2ban',
-                                                               hasstatus: 'true',
-                                                               hasrestart: 'true')
+                                                               name: 'fail2ban',)
         end
       end
-    end # end context
-  end # end on_supported_os loop
-end # end describe
+    end
+  end
+end

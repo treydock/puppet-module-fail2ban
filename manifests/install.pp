@@ -3,8 +3,8 @@ class fail2ban::install {
   assert_private()
 
   if $fail2ban::manage_repo and $fail2ban::ensure == 'present' {
-    if $::osfamily == 'RedHat' {
-      include ::epel
+    if $facts['os']['family'] == 'RedHat' {
+      include epel
       $_require = Class['epel']
     } else {
       $_require = undef
@@ -18,5 +18,4 @@ class fail2ban::install {
     name    => $fail2ban::package_name,
     require => $_require,
   }
-
 }

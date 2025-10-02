@@ -9,7 +9,6 @@
 define fail2ban::jail (
   Enum['present', 'absent'] $ensure = 'present',
 ) {
-
   include fail2ban
 
   $_enabled = $ensure ? {
@@ -18,5 +17,4 @@ define fail2ban::jail (
   }
 
   fail2ban_jail_config { "${name}/enabled": value => $_enabled, notify => Class['fail2ban::service'] }
-
 }

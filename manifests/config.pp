@@ -33,5 +33,4 @@ class fail2ban::config {
     fail2ban_jail_config { 'DEFAULT/findtime': value => $fail2ban::default_findtime }
     fail2ban_jail_config { 'DEFAULT/maxretry': value => $fail2ban::default_maxretry }
   }
-
 }
