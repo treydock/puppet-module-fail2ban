@@ -7,13 +7,13 @@
 ### Classes
 
 * [`fail2ban`](#fail2ban): Manage fail2ban
-* [`fail2ban::config`](#fail2banconfig): Private class.
-* [`fail2ban::install`](#fail2baninstall): Private class.
-* [`fail2ban::service`](#fail2banservice): Private class.
+* [`fail2ban::config`](#fail2ban--config): Private class.
+* [`fail2ban::install`](#fail2ban--install): Private class.
+* [`fail2ban::service`](#fail2ban--service): Private class.
 
 ### Defined types
 
-* [`fail2ban::jail`](#fail2banjail): Manage jail configs
+* [`fail2ban::jail`](#fail2ban--jail): Manage jail configs
 
 ### Resource types
 
@@ -40,25 +40,23 @@ class { 'fail2ban':
 
 The following parameters are available in the `fail2ban` class:
 
-* [`ensure`](#ensure)
-* [`package_ensure`](#package_ensure)
-* [`package_name`](#package_name)
-* [`manage_repo`](#manage_repo)
-* [`service_name`](#service_name)
-* [`service_ensure`](#service_ensure)
-* [`service_enable`](#service_enable)
-* [`service_hasstatus`](#service_hasstatus)
-* [`service_hasrestart`](#service_hasrestart)
-* [`config_path`](#config_path)
-* [`jail_config_path`](#jail_config_path)
-* [`default_ignoreip`](#default_ignoreip)
-* [`default_bantime`](#default_bantime)
-* [`default_findtime`](#default_findtime)
-* [`default_maxretry`](#default_maxretry)
-* [`logtarget`](#logtarget)
-* [`jails`](#jails)
+* [`ensure`](#-fail2ban--ensure)
+* [`package_ensure`](#-fail2ban--package_ensure)
+* [`package_name`](#-fail2ban--package_name)
+* [`manage_repo`](#-fail2ban--manage_repo)
+* [`service_name`](#-fail2ban--service_name)
+* [`service_ensure`](#-fail2ban--service_ensure)
+* [`service_enable`](#-fail2ban--service_enable)
+* [`config_path`](#-fail2ban--config_path)
+* [`jail_config_path`](#-fail2ban--jail_config_path)
+* [`default_ignoreip`](#-fail2ban--default_ignoreip)
+* [`default_bantime`](#-fail2ban--default_bantime)
+* [`default_findtime`](#-fail2ban--default_findtime)
+* [`default_maxretry`](#-fail2ban--default_maxretry)
+* [`logtarget`](#-fail2ban--logtarget)
+* [`jails`](#-fail2ban--jails)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-fail2ban--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -66,7 +64,7 @@ Determines presence of fail2ban.
 
 Default value: `'present'`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-fail2ban--package_ensure"></a>`package_ensure`
 
 Data type: `String`
 
@@ -74,7 +72,7 @@ The ensure property of fail2ban package.
 
 Default value: `'present'`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-fail2ban--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -82,16 +80,16 @@ The fail2ban package name.
 
 Default value: `'fail2ban-server'`
 
-##### <a name="manage_repo"></a>`manage_repo`
+##### <a name="-fail2ban--manage_repo"></a>`manage_repo`
 
 Data type: `Boolean`
 
 Boolean that sets if fail2ban repo is managed.
 For EL systems this enables management of EPEL repo.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_name"></a>`service_name`
+##### <a name="-fail2ban--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -99,7 +97,7 @@ fail2ban service name.
 
 Default value: `'fail2ban'`
 
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-fail2ban--service_ensure"></a>`service_ensure`
 
 Data type: `String`
 
@@ -107,31 +105,15 @@ fail2ban service ensure property.
 
 Default value: `'running'`
 
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-fail2ban--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
 fail2ban service enable property.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="service_hasstatus"></a>`service_hasstatus`
-
-Data type: `Boolean`
-
-fail2ban service hasstatus property.
-
-Default value: ``true``
-
-##### <a name="service_hasrestart"></a>`service_hasrestart`
-
-Data type: `Boolean`
-
-fail2ban service hasrestart property.
-
-Default value: ``true``
-
-##### <a name="config_path"></a>`config_path`
+##### <a name="-fail2ban--config_path"></a>`config_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -139,7 +121,7 @@ Path to fail2ban.local.
 
 Default value: `'/etc/fail2ban/fail2ban.local'`
 
-##### <a name="jail_config_path"></a>`jail_config_path`
+##### <a name="-fail2ban--jail_config_path"></a>`jail_config_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -147,7 +129,7 @@ Path to jail.local.
 
 Default value: `'/etc/fail2ban/jail.local'`
 
-##### <a name="default_ignoreip"></a>`default_ignoreip`
+##### <a name="-fail2ban--default_ignoreip"></a>`default_ignoreip`
 
 Data type: `Array[String]`
 
@@ -155,7 +137,7 @@ Global ignoreip value.
 
 Default value: `['127.0.0.1/8']`
 
-##### <a name="default_bantime"></a>`default_bantime`
+##### <a name="-fail2ban--default_bantime"></a>`default_bantime`
 
 Data type: `Integer`
 
@@ -163,7 +145,7 @@ Global bantime value.
 
 Default value: `600`
 
-##### <a name="default_findtime"></a>`default_findtime`
+##### <a name="-fail2ban--default_findtime"></a>`default_findtime`
 
 Data type: `Integer`
 
@@ -171,7 +153,7 @@ Global findtime value.
 
 Default value: `600`
 
-##### <a name="default_maxretry"></a>`default_maxretry`
+##### <a name="-fail2ban--default_maxretry"></a>`default_maxretry`
 
 Data type: `Integer`
 
@@ -179,7 +161,7 @@ Global maxretry value.
 
 Default value: `5`
 
-##### <a name="logtarget"></a>`logtarget`
+##### <a name="-fail2ban--logtarget"></a>`logtarget`
 
 Data type: `Variant[Enum['SYSLOG','STDOUT','STDERR'],Stdlib::Absolutepath]`
 
@@ -187,29 +169,29 @@ Location of logtarget.
 
 Default value: `'/var/log/fail2ban.log'`
 
-##### <a name="jails"></a>`jails`
+##### <a name="-fail2ban--jails"></a>`jails`
 
 Data type: `Optional[Variant[Array, Hash]]`
 
 Array or Hash of jails. Value is passed to `fail2ban::jail` defined type.
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="fail2banconfig"></a>`fail2ban::config`
-
-Private class.
-
-### <a name="fail2baninstall"></a>`fail2ban::install`
+### <a name="fail2ban--config"></a>`fail2ban::config`
 
 Private class.
 
-### <a name="fail2banservice"></a>`fail2ban::service`
+### <a name="fail2ban--install"></a>`fail2ban::install`
+
+Private class.
+
+### <a name="fail2ban--service"></a>`fail2ban::service`
 
 Private class.
 
 ## Defined types
 
-### <a name="fail2banjail"></a>`fail2ban::jail`
+### <a name="fail2ban--jail"></a>`fail2ban::jail`
 
 Manage jail configs
 
@@ -225,9 +207,9 @@ fail2ban::jail { 'sshd': ensure => 'present' }
 
 The following parameters are available in the `fail2ban::jail` defined type:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-fail2ban--jail--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-fail2ban--jail--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -261,16 +243,16 @@ The value of the setting to be defined.
 
 The following parameters are available in the `fail2ban_config` type.
 
-* [`name`](#name)
-* [`provider`](#provider)
+* [`name`](#-fail2ban_config--name)
+* [`provider`](#-fail2ban_config--provider)
 
-##### <a name="name"></a>`name`
+##### <a name="-fail2ban_config--name"></a>`name`
 
 namevar
 
 Section/setting name to manage from fail2ban.local
 
-##### <a name="provider"></a>`provider`
+##### <a name="-fail2ban_config--provider"></a>`provider`
 
 The specific backend to use for this `fail2ban_config` resource. You will seldom need to specify this --- Puppet will
 usually discover the appropriate provider for your platform.
@@ -299,16 +281,16 @@ The value of the setting to be defined.
 
 The following parameters are available in the `fail2ban_jail_config` type.
 
-* [`name`](#name)
-* [`provider`](#provider)
+* [`name`](#-fail2ban_jail_config--name)
+* [`provider`](#-fail2ban_jail_config--provider)
 
-##### <a name="name"></a>`name`
+##### <a name="-fail2ban_jail_config--name"></a>`name`
 
 namevar
 
 Section/setting name to manage from jail.local
 
-##### <a name="provider"></a>`provider`
+##### <a name="-fail2ban_jail_config--provider"></a>`provider`
 
 The specific backend to use for this `fail2ban_jail_config` resource. You will seldom need to specify this --- Puppet
 will usually discover the appropriate provider for your platform.

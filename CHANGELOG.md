@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v3.0.0](https://github.com/treydock/puppet-module-fail2ban/tree/v3.0.0) (2025-10-02)
+
+[Full Changelog](https://github.com/treydock/puppet-module-fail2ban/compare/v2.0.0...v3.0.0)
+
+### Changed
+
+- Major updates [\#11](https://github.com/treydock/puppet-module-fail2ban/pull/11) ([treydock](https://github.com/treydock))
+
 ## [v2.0.0](https://github.com/treydock/puppet-module-fail2ban/tree/v2.0.0) (2021-09-17)
 
 [Full Changelog](https://github.com/treydock/puppet-module-fail2ban/compare/v1.1.1...v2.0.0)
