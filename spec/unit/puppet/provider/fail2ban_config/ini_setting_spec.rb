@@ -18,6 +18,7 @@ $LOAD_PATH.push(
     'lib',
   ),
 )
+
 require 'spec_helper'
 provider_class = Puppet::Type.type(:fail2ban_config).provider(:ini_setting)
 describe provider_class do
